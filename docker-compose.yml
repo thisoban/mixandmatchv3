@@ -1,0 +1,40 @@
+version: "3.7"
+
+services:
+  rest-api:
+    build:
+      context: .
+      dockerfile: mixandmatchv3/Dockerfile
+    environment:
+      PMA_HOST: 8080
+    ports:
+      - "8080:80"
+    expose:
+      - '8080:80'
+      
+    depends_on:
+      - mysql-server
+  mysql-server:
+    image: mysql:latest
+    container_name: mysql-server-container
+    volumes:
+        - database:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: password123
+    ports:
+      - "3308:3306"
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin-container
+    environment:
+      PMA_ARBITRARY: 1
+      PMA_HOST: mysql-server-container
+      PMA_PORT: 3306
+      PMA_USER: root
+      PMA_PASSWORD: password123
+    ports:
+      - "8234:80"
+    depends_on:
+      - mysql-server  
+volumes:
+  database:
