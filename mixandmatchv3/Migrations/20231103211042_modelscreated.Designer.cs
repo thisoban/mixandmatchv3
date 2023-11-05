@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using mixandmatchv3;
 
@@ -10,9 +11,11 @@ using mixandmatchv3;
 namespace mixandmatchv3.Migrations
 {
     [DbContext(typeof(MMContext))]
-    partial class MMContextModelSnapshot : ModelSnapshot
+    [Migration("20231103211042_modelscreated")]
+    partial class modelscreated
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -55,7 +58,7 @@ namespace mixandmatchv3.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("companies");
+                    b.ToTable("Company");
                 });
 
             modelBuilder.Entity("DTO.Job", b =>
@@ -88,54 +91,6 @@ namespace mixandmatchv3.Migrations
                     b.ToTable("Jobs");
                 });
 
-            modelBuilder.Entity("DTO.hiring_manager", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<int>("companyidID")
-                        .HasColumnType("int");
-
-                    b.Property<string>("email")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("name")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("phonenumber")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.HasKey("id");
-
-                    b.HasIndex("companyidID");
-
-                    b.ToTable("hiring_Managers");
-                });
-
-            modelBuilder.Entity("DTO.jobrequirements", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<string>("description")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<int>("jobIdid")
-                        .HasColumnType("int");
-
-                    b.HasKey("id");
-
-                    b.HasIndex("jobIdid");
-
-                    b.ToTable("jobrequirements");
-                });
-
             modelBuilder.Entity("DTO.Job", b =>
                 {
                     b.HasOne("DTO.Company", "companyid")
@@ -145,28 +100,6 @@ namespace mixandmatchv3.Migrations
                         .IsRequired();
 
                     b.Navigation("companyid");
-                });
-
-            modelBuilder.Entity("DTO.hiring_manager", b =>
-                {
-                    b.HasOne("DTO.Company", "companyid")
-                        .WithMany()
-                        .HasForeignKey("companyidID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("companyid");
-                });
-
-            modelBuilder.Entity("DTO.jobrequirements", b =>
-                {
-                    b.HasOne("DTO.Job", "jobId")
-                        .WithMany()
-                        .HasForeignKey("jobIdid")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("jobId");
                 });
 #pragma warning restore 612, 618
         }
