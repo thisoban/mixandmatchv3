@@ -5,7 +5,14 @@ namespace mixandmatchv3
 {
     public class MMContext: DbContext
     {
-        static readonly string connectionString = "Server=localhost; Port=3308;User ID=root;Password=password123;Database=temp";
+        static readonly string connectionString = "Server=mysql-server-container; Port=3306;User ID=root;Password=password123;Database=temp";
+        private string? connectionString1;
+
+        public MMContext(string? connectionString1)
+        {
+            this.connectionString1 = connectionString1;
+        }
+
         public DbSet<Job> Jobs { get; set; }
         public DbSet<Company> companies { get; set; }
         public DbSet<hiring_manager> hiring_Managers { get; set; }  
@@ -18,7 +25,7 @@ namespace mixandmatchv3
 
         public Job GetJob(int jobId)
         {
-            return Jobs.FirstOrDefault(x => x.id == jobId);
+            return Jobs.Include(c =>c.companyid).Include(a => a.Hiring_Managerid).FirstOrDefault(x => x.id == jobId);
         }
 
         public List<Job> getJobs()

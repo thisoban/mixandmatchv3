@@ -18,6 +18,7 @@ namespace mixandmatchv3.Controllers
             public IActionResult Details(int id)
             {
                 Job job = _context.GetJob(id);
+            Console.WriteLine(job);
                 if (job == null)
                 {
                     return NotFound("the job not found");
