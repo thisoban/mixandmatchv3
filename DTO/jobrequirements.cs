@@ -7,15 +7,12 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    public class jobrequirements
+    public class jobRequirements
     {
-        public int id { get; set; }
+        public int Id { get; set; }
         [Required]
         [MaxLength(60)]
-        public string name { get; set; }
-        [MaxLength(255)]
-        [Required]
-        public string description { get; set; }
-        public virtual Job jobId { get; set; }
+        public required string Description { get; set; }
+        public virtual required Job jobId { get; set; }
     }
 }

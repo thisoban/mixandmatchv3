@@ -5,8 +5,8 @@ namespace mixandmatchv3
 {
     public class MMContext: DbContext
     {
-        static readonly string connectionString = "Server=mysql-server-container; Port=3306;User ID=root;Password=password123;Database=temp";
-        private string? connectionString1;
+        static readonly string connectionString = "Server=localhost; Port=3308;User ID=root;Password=password123;Database=temp";
+        private readonly string? connectionString1;
 
         public MMContext(string? connectionString1)
         {
@@ -16,17 +16,14 @@ namespace mixandmatchv3
         public DbSet<Job> Jobs { get; set; }
         public DbSet<Company> companies { get; set; }
         public DbSet<hiring_manager> hiring_Managers { get; set; }  
-        public DbSet<jobrequirements> jobrequirements { get; set; } 
-
+        public DbSet<jobRequirements> jobrequirements { get; set; } 
+        public DbSet<User> users { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
         }
 
-        public Job GetJob(int jobId)
-        {
-            return Jobs.Include(c =>c.companyid).Include(a => a.Hiring_Managerid).FirstOrDefault(x => x.id == jobId);
-        }
+        public Job GetJob(int jobId) => Jobs.Include(c => c.companyid).Include(a => a.Hiring_Managerid).FirstOrDefault(x => x.id == jobId);
 
         public List<Job> getJobs()
         {
@@ -42,7 +39,7 @@ namespace mixandmatchv3
             return hiring_Managers.ToList();
         }
 
-        public List<jobrequirements> GetJobrequirementsFromJobId(int jobId)
+        public List<jobRequirements> GetJobrequirementsFromJobId(int jobId)
         {
             return jobrequirements.Where(x => x.jobId.id == jobId).ToList();
         }
