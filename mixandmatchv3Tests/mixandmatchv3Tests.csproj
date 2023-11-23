@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Logic\Logic.csproj" />
     <ProjectReference Include="..\mixandmatchv3\mixandmatchv3.csproj" />
   </ItemGroup>
 

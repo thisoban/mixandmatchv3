@@ -22,10 +22,10 @@ namespace Logic.Logic
           Job job =   _Ijobdal.GetJob(id);
             if (job.id != id)
             {
-                throw new Exception("not found job");
+                throw new Exception("not found correct job");
             }
             if (job.Hiring_Managerid.name == null) {
-                throw new Exception("not found hiring manager"); 
+                throw new NullReferenceException("not found hiring manager"); 
             }
             return job;
         }
