@@ -38,7 +38,7 @@ namespace Logic.Logic
             jobDetails jobDetails = new jobDetails()
             {
 
-            }
+            };
             return job;
         }
 
