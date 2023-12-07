@@ -28,6 +28,9 @@ namespace DAL.Dal
             return _dalContext.Jobs.ToList();
         }
 
-        
+        private List<jobRequirements> jobRequirements(int jobid)
+        {
+            return _dalContext.jobrequirements.Where(x=>x.jobId.id == jobid).ToList();
+        }
     }
 }

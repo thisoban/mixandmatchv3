@@ -12,9 +12,15 @@ namespace Logic.Logic
     public class JobLogic : IJobLogic
     {
         private readonly IJobDAL _Ijobdal;
-        public JobLogic(IJobDAL dAL)
+        private readonly IjobRequirement _ijobRequirement1;
+        public JobLogic(IJobDAL dAL, IjobRequirement ijobRequirement)
         {
             _Ijobdal = dAL;
+            _ijobRequirement1 = ijobRequirement;
+        }
+        public JobLogic( IJobDAL jobDAL)
+        {
+            _Ijobdal= jobDAL;
         }
 
         public Job getjob(int id)
@@ -26,6 +32,12 @@ namespace Logic.Logic
             }
             if (job.Hiring_Managerid.name == null) {
                 throw new NullReferenceException("not found hiring manager"); 
+            }
+            List<jobRequirements> jobRequirements = _ijobRequirement1.jobRequirements(id);
+
+            jobDetails jobDetails = new jobDetails()
+            {
+
             }
             return job;
         }

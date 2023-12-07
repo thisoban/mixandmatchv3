@@ -13,7 +13,6 @@ namespace mixandmatchv3.Controllers
             private readonly MMContext _context;
             public JobsController( IJobLogic jobLogic)
             {
-                
                 _jobLogic = jobLogic;
             }
 
@@ -33,7 +32,7 @@ namespace mixandmatchv3.Controllers
             [HttpGet("list", Name = "getjoblist")] // Add a new route for listing all jobs
             public IActionResult ListJobs()
             {
-                List<Job> jobs = _context.getJobs(); // Replace with your method to fetch all jobs
+                List<Job> jobs = _jobLogic.getjobs(); // Replace with your method to fetch all jobs
                 return Ok(jobs);
             }
         }
