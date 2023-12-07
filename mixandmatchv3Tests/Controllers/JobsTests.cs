@@ -32,11 +32,10 @@ namespace mixandmatchv3.Controllers.Tests
                 description = "softwaree engineering description",
                 start = starting,
                 end = ending,
-        Hiring_Managerid = new hiring_manager()
+                Hiring_Managerid = new hiring_manager()
                 {
                     id=1,
-                    name= "joelle",
-        
+                    name= "joelle" 
                 }
             };
             var jobsMock = new Mock<IJobDAL>();

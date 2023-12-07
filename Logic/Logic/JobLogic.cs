@@ -33,7 +33,7 @@ namespace Logic.Logic
             if (job.Hiring_Managerid.name == null) {
                 throw new NullReferenceException("not found hiring manager"); 
             }
-            List<jobRequirements> jobRequirements = _ijobRequirement1.jobRequirements(id);
+            //List<jobRequirements> jobRequirements = _ijobRequirement1.jobRequirements(id);
 
             jobDetails jobDetails = new jobDetails()
             {

@@ -42,8 +42,6 @@ namespace Logic.Tests
             var result = joblogic.getjob(id);
             Assert.IsNotNull(result);
             
-
-            
         }
 
         [TestMethod()]
