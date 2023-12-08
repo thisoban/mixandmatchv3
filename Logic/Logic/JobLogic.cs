@@ -12,13 +12,13 @@ namespace Logic.Logic
     public class JobLogic : IJobLogic
     {
         private readonly IJobDAL _Ijobdal;
-        private readonly IjobRequirement _ijobRequirement1;
-        public JobLogic(IJobDAL dAL, IjobRequirement ijobRequirement)
-        {
-            _Ijobdal = dAL;
-            _ijobRequirement1 = ijobRequirement;
-        }
-        public JobLogic( IJobDAL jobDAL)
+       // private readonly IjobRequirement _ijobRequirement1;
+        //public JobLogic(IJobDAL dAL/*, IjobRequirement ijobRequirement*/)
+        //{
+        //    _Ijobdal = dAL;
+        //    //_ijobRequirement1 = ijobRequirement;
+        //}
+        public JobLogic(IJobDAL jobDAL)
         {
             _Ijobdal= jobDAL;
         }
@@ -39,11 +39,7 @@ namespace Logic.Logic
         public List<Job> getjobs()
         {
             List<Job> jobs = _Ijobdal.getJobs();
-            if (jobs == null)
-            {
-                throw new Exception("not found jobs");
-            }
-            return jobs;
+            return jobs == null ? throw new Exception("not found jobs") : jobs;
         }
     }
 }
