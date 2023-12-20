@@ -9,8 +9,6 @@ namespace mixandmatchv3.Controllers
         public class JobsController : Controller
         {
             private readonly IJobLogic _jobLogic;
-
-            private readonly MMContext _context;
             public JobsController( IJobLogic jobLogic)
             {
                 _jobLogic = jobLogic;
