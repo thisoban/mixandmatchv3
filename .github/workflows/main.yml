@@ -56,13 +56,8 @@ jobs:
           dotnet test --collect "code coverage"
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
 
-      - name: Run tests with coverage
-        run: |
-          dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
-        working-directory: mixandmatchv3Tests
-
-      - name: Publish coverage results
-        uses: coverlet-coverage/coverlet-action@v2
+      - name: Publish coverage results to Coveralls
+        uses: coverallsapp/github-action@v2
         with:
-          githubToken: ${{ secrets.GITHUB_TOKEN }}
-          coverageFile: ./path/to/your/test/project/coverage.opencover.xml
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path-to-lcov: path/to/your/test/project/coverage.info
