@@ -59,7 +59,7 @@ jobs:
       - name: Run tests with coverage
         run: |
           dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
-        working-directory: path/to/your/test/project
+        working-directory: mixandmatchv3Tests
 
       - name: Publish coverage results
         uses: coverlet-coverage/coverlet-action@v2
