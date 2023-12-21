@@ -60,4 +60,4 @@ jobs:
         uses: coverallsapp/github-action@v2
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          path-to-lcov: path/to/your/test/project/coverage.info
+          path-to-lcov: mixandmatchv3Tests/TestResults
