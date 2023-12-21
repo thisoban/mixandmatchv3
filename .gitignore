@@ -47,7 +47,6 @@ Generated\ Files/
 
 # NUnit
 *.VisualState.xml
-TestResult.xml
 nunit-*.xml
 
 # Build Results of an ATL Project
@@ -144,12 +143,12 @@ _TeamCity*
 
 # Coverlet is a free, cross platform Code Coverage Tool
 coverage*.json
-coverage*.xml
+
 coverage*.info
 
 # Visual Studio code coverage results
 *.coverage
-*.coveragexml
+
 
 # NCrunch
 _NCrunch_*
