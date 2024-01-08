@@ -27,7 +27,7 @@ namespace mixandmatchv3
 
         public List<Job> getJobs()
         {
-            return Jobs.ToList();
+            return Jobs.Include(c =>c.companyid).Include(h =>h.Hiring_Managerid).ToList();
         }
 
         public List<Company> getCompanys()

@@ -39,7 +39,11 @@ namespace Logic.Logic
         public List<Job> getjobs()
         {
             List<Job> jobs = _Ijobdal.getJobs();
-            return jobs == null ? throw new Exception("not found jobs") : jobs;
+          if(jobs.Count == 0)
+            {
+                throw new NullReferenceException("not found jobs");
+            }
+            return  jobs;
         }
     }
 }
