@@ -15,5 +15,13 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      working-directory: ./mixandmatchv3
-      run: docker build . --file Dockerfile --tag thiso/backend
+      working-directory: ./
+      run: docker build . --file Dockerfile --tag thisoban/mixandmatch:latest
+    - name: publish
+      run: |
+          docker login -u thisoban -p ${{ secrets.DOCKER_HUB_TOKEN }}
+          docker push thisoban/mixandmatch:latest
+    
+      
+
+
