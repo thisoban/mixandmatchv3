@@ -25,6 +25,9 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddCors();
 
+
+builder.Services.AddScoped<IUserLogic, UserLogic>();
+builder.Services.AddScoped<IUserDAL, UserDAL>();
 builder.Services.AddScoped<IJobLogic, JobLogic>();
 builder.Services.AddScoped<IJobDAL, JobDAL>();
 builder.Services.AddDbContext<DalContext>();

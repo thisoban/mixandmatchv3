@@ -20,7 +20,7 @@ namespace mixandmatchv3.Controllers.Tests
     public class JobsTests
     {
         [TestMethod()]
-        public void DetailsTest()
+        public void DetailsNotNullTest()
         {
             DateTime starting = new DateTime(2019, 05, 09, 09, 15, 00);
             DateTime ending = new DateTime(2019, 08, 09, 09, 15, 00);
@@ -45,17 +45,10 @@ namespace mixandmatchv3.Controllers.Tests
             var joblogic = new JobLogic(jobsMock.Object);
             var jobcontroller = new JobsController(joblogic);
             var result = jobcontroller.Details(id);
-
-
-            Assert.IsNotNull(result);   
-
-            //Assert.IsInstanceOfType(result, typeof(OkObjectResult));
-            //if((Type)result == typeof(OkObjectResult))
-            //{
-            //    Assert.Equals(((OkObjectResult)result).Value, expectedJob);
-            //}
-
+          
+            Assert.IsNotNull(result); 
             Console.WriteLine(result);
+
             //Assert.Equals(expectedJob.name, result);
             //Assert.Equals(expectedJob.id, result);
         }
